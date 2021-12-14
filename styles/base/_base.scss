@@ -1,0 +1,49 @@
+* {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  font-family: 'Montserrat', sans-serif;
+  color: #FFF;
+}
+
+body {
+  background-color: $black;
+}
+
+.container {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.video {
+  width: 100%;
+  height: 100vh;
+}
+
+@include minwidth(md) {
+  .container {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+
+@include minwidth(lg) {
+  .container {
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+}
+
+@include minwidth(xl) {
+  .container {
+    padding-left: 165px;
+    padding-right: 165px;
+  }
+}
+
+@include minwidth(xxl) {
+  .container {
+    padding-left: 200px;
+    padding-right: 200px;
+  }
+}

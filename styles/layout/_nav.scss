@@ -1,0 +1,158 @@
+.nav {
+  padding-top: 30px;
+  padding-bottom: 30px;
+
+  &_container {
+    position: fixed;
+    inset: 0;
+  }
+
+  &_close {
+    position: absolute;
+    z-index: 99;
+    top: 20px;
+    right: 15px;
+    overflow: hidden;
+
+    > svg {
+      width: 30px;
+      height: 30px;
+      transform: translateY(-100%);
+      transition: all .5s ease-in-out;
+    }
+
+    &_active {
+      > svg {
+        transform: translateY(0%);
+        transition-delay: .5s;
+      }
+    }
+  }
+
+  &_navbar {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 32px;
+
+    background-color: $red;
+    clip-path: circle(4% at 90% 6%);
+    padding: 15px;
+
+    transition: clip-path .5s ease-in-out, background-color .8s ease-in-out;
+
+    &_active {
+      background-color: $black;
+      clip-path: circle(100%);
+    }
+
+    &_list {
+      display: flex;
+      flex-direction: column;
+      row-gap: 15px;
+    }
+
+    &_wrapper {
+      overflow: hidden;
+    }
+
+    &_item {
+      display: block;
+      transform: translateY(200%);
+      opacity: 0;
+      transition: all .5s ease-in-out;
+
+      &_active {
+        transform: translateY(0%);
+        opacity: 1;
+        transition-delay: .5s;
+      }
+    }
+  }
+}
+
+@include minwidth(md) {
+  .nav {
+    &_close {
+      top: 30px;
+      right: 30px;
+
+      > svg {
+        width: 42px;
+        height: 42px;
+      }
+    }
+
+    &_navbar {
+      font-size: 42px;
+
+      background-color: $red;
+      clip-path: circle(2.5% at 94% 4%);
+      padding: 15px;
+
+      transition: clip-path .5s ease-in-out, background-color .8s ease-in-out;
+
+      &_active {
+        background-color: $black;
+        clip-path: circle(100%);
+      }
+
+      &_list {
+        row-gap: 42px;
+      }
+    }
+  }
+}
+
+@include minwidth(lg) {
+  .nav {
+    &_navbar {
+      background-color: $red;
+      clip-path: circle(2.5% at 93% 3.5%);
+      padding: 15px;
+
+      transition: clip-path .5s ease-in-out, background-color .8s ease-in-out;
+
+      &_active {
+        background-color: $black;
+        clip-path: circle(100%);
+      }
+    }
+  }
+}
+
+@include minwidth(xl) {
+  .nav {
+    &_navbar {
+      background-color: $red;
+      clip-path: circle(2.5% at 90% 5.5%);
+      padding: 15px;
+
+      transition: clip-path .5s ease-in-out, background-color .8s ease-in-out;
+
+      &_active {
+        background-color: $black;
+        clip-path: circle(100%);
+      }
+    }
+  }
+}
+
+@include minwidth(xl) {
+  .nav {
+    &_navbar {
+      background-color: $red;
+      clip-path: circle(2.5% at 87% 4.5%);
+      padding: 15px;
+
+      transition: clip-path .5s ease-in-out, background-color .8s ease-in-out;
+
+      &_active {
+        background-color: $black;
+        clip-path: circle(100%);
+      }
+    }
+  }
+}
