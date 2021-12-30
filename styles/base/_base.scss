@@ -47,3 +47,18 @@ body {
     padding-right: 200px;
   }
 }
+
+#test {
+  overflow: hidden;
+
+  &_1 {
+    height: 50px;
+    background-color: blue;
+  }
+
+  &_2 {
+    height: 50px;
+    transform: translateY(50%);
+    background-color: green;
+  }
+}

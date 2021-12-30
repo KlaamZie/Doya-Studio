@@ -1,0 +1,80 @@
+.equipe {
+  padding: 50px 0;
+  display: grid;
+
+  &_title {
+    text-align: left;
+    font-size: 40px;
+    text-transform: uppercase;
+    overflow: hidden;
+
+    span {
+      display: block;
+      overflow: hidden;
+      transform: translateY(100%);
+      transition: all .5s ease-in-out;
+
+      &.intersecting {
+        transform: translateY(0%);
+      }
+    }
+
+    &:nth-of-type(2) {
+      span {
+        &.intersecting {
+          animation-delay: .4s;
+        }
+      }
+    }
+
+    &:nth-of-type(3) {
+      span {
+        &.intersecting {
+          animation-delay: .8s;
+        }
+      }
+    }
+  }
+
+  &_portrait {
+    margin-top: 50px;
+
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    overflow: hidden;
+
+    &_container {
+      position: relative;
+
+
+    }
+
+    &_wrapper {
+      transition: all 1s ease-in-out;
+
+      &.even {
+        transform: translateX(100%);
+      }
+
+      &.odd {
+        transform: translateX(-100%);
+      }
+
+      &.intersecting {
+        transform: translateX(0%);
+      }
+    }
+
+    &_presentation {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      right: 20px;
+
+      display: flex;
+      flex-direction: column;
+      row-gap: 5px;
+    }
+  }
+}
