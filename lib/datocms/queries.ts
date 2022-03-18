@@ -69,6 +69,9 @@ const QUERY_GENERAL = `
         url
         alt
         id
+        video {
+          streamingUrl
+        }
       }
       telephone
       mail

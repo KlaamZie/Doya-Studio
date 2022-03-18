@@ -1,4 +1,4 @@
-import {StructuredText} from "datocms-structured-text-utils";
+import { StructuredText } from "datocms-structured-text-utils";
 
 // eslint-disable-next-line @typescript-eslint/no-namespace
 export namespace GraphQlResponse {
@@ -63,4 +63,7 @@ interface Image {
   id: string;
   alt: string;
   url: string;
+  video: {
+    streamingUrl: string;
+  };
 }

@@ -34,6 +34,7 @@ const Home: (props: {
             autoPlay
             muted
             loop
+            playsInline
             style={{ objectFit: "cover", objectPosition: "center" }}
           >
             <source src={props.general.showreel.url} />
@@ -66,8 +67,6 @@ export const getStaticProps: GetStaticProps = async () => {
   const { general } = (await request(
     Query.QUERY_GENERAL
   )) as GraphQlResponse.Generals;
-
-  console.log(general);
 
   return {
     props: {
