@@ -1,0 +1,247 @@
+.real {
+  &_grid {
+    margin: 30px 0;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+
+    &_item {
+      &_container {
+        background-size: cover;
+        height: 200px;
+      }
+
+      &_content {
+        opacity: 0;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(0, 0, 0, 0.3);
+
+        transition: all .2s;
+
+        font-weight: bold;
+        font-size: 28px;
+        cursor: pointer;
+
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  &_all {
+    width: 100%;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+
+    &_button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 20px;
+    }
+  }
+}
+
+.allReal, .oneReal {
+  z-index: 99;
+  position: fixed;
+  inset: 0;
+  background-color: black;
+  clip-path: circle(0% at 50% 100%);
+  transition: all .5s;
+  overflow-y: auto;
+
+  &.visible {
+    clip-path: circle(100%);
+  }
+
+  &_close {
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+
+    &_button {
+      font-size: 20px;
+      border: none;
+      background: none;
+      cursor: pointer;
+    }
+  }
+}
+
+.oneReal {
+  padding-bottom: 100px;
+
+  &_container {
+    margin: 0 15px;
+  }
+
+  &_title {
+    font-size: 35px;
+    margin: 0 15px;
+  }
+
+  &_subtitle {
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  &_video {
+    margin-top: 15px;
+    height: 300px;
+  }
+
+
+  &_presta {
+    &_list {
+      margin: 10px 0 15px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 5px;
+    }
+  }
+
+  &_desc {
+    &_wrapper {
+      margin-top: 10px;
+      text-align: justify;
+    }
+  }
+
+  &_photos {
+    &_wrapper {
+      margin-top: 10px;
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+
+
+  &_photo {
+    position: relative;
+    height: 300px;
+  }
+}
+
+@include minwidth(md) {
+  .real {
+    &_grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .oneReal {
+    padding: 0 30px;
+
+    &_wrapper {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: fit-content(100%);
+
+      row-gap: 40px;
+    }
+
+    &_container {
+      margin: 0;
+    }
+
+    &_title {
+      margin: 0;
+      font-size: 45px;
+    }
+
+    &_subtitle {
+      margin-top: 0;
+      font-size: 30px;
+    }
+
+    &_video {
+      grid-column: 1 / span 2;
+      height: 350px;
+      margin-top: 0;
+    }
+
+
+    &_presta {
+      &_list {
+        margin: 10px 0 0;
+      }
+    }
+
+    &_photos {
+      grid-column: 1 / span 2;
+
+      &_wrapper {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    &_photo {
+      height: 250px;
+    }
+  }
+}
+
+@include minwidth(lg) {
+  .real {
+    &_grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .oneReal {
+    padding: 0 60px;
+
+    &_video {
+      grid-column: 1/ span 2;
+      height: 400px;
+    }
+
+    &_presta {
+      &_list {
+        margin: 10px 0 0;
+      }
+    }
+
+    &_photos {
+      &_wrapper {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    &_photo {
+      height: 250px;
+    }
+  }
+}
+
+@include minwidth(xl) {
+  .real {
+    &_grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .oneReal {
+    &_photos {
+      &_wrapper {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+  }
+}
+
+@include minwidth(xxl) {
+
+  .oneReal {
+    &_video {
+      height: 500px;
+    }
+  }
+}

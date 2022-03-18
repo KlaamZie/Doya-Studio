@@ -1,14 +1,50 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const Nav = () => {
   const [displayNav, setDisplayNav] = useState(false);
+
+  useEffect(() => {
+    const target = document.querySelector(".contact");
+    const navbar = document.getElementById("nav");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            navbar?.classList.remove("displayed");
+            navbar?.classList.add("hidden");
+          } else {
+            navbar?.classList.remove("hidden");
+            navbar?.classList.add("displayed");
+          }
+        });
+      },
+      {
+        threshold: 0.5,
+      }
+    );
+
+    if (target) {
+      observer.observe(target);
+    }
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
+  const handleNav = () => {
+    document.body.classList.toggle("stop-scroll");
+    setDisplayNav(!displayNav);
+  };
+
   return (
-    <nav className="nav container">
-      <h1 className="nav_title">DY Studio</h1>
+    <nav className="nav container displayed" id="nav">
+      <h1 className="nav_title">DOYA Studio</h1>
       <div
         className="nav_btn"
-        onClick={(e) => {
-          setDisplayNav(!displayNav);
+        onClick={() => {
+          handleNav();
         }}
       >
         {displayNav ? (
@@ -24,7 +60,7 @@ const Nav = () => {
               fill="currentColor"
               fillRule="evenodd"
               clipRule="evenodd"
-            ></path>
+            />
           </svg>
         ) : (
           <svg
@@ -39,7 +75,7 @@ const Nav = () => {
               fill="currentColor"
               fillRule="evenodd"
               clipRule="evenodd"
-            ></path>
+            />
           </svg>
         )}
       </div>
@@ -47,22 +83,30 @@ const Nav = () => {
         <ul className="nav_navbar_list">
           <li className="nav_navbar_wrapper">
             <span className={`nav_navbar_item ${displayNav ? "active" : ""}`}>
-              Équipe
+              <a href="#equipe" onClick={() => handleNav()}>
+                Équipe
+              </a>
             </span>
           </li>
           <li className="nav_navbar_wrapper">
             <span className={`nav_navbar_item ${displayNav ? "active" : ""}`}>
-              Nos Compétences
+              <a href="#skills" onClick={() => handleNav()}>
+                Nos Compétences
+              </a>
             </span>
           </li>
           <li className="nav_navbar_wrapper">
             <span className={`nav_navbar_item ${displayNav ? "active" : ""}`}>
-              Nos Projets
+              <a href="#real" onClick={() => handleNav()}>
+                Nos Projets
+              </a>
             </span>
           </li>
           <li className="nav_navbar_wrapper">
             <span className={`nav_navbar_item ${displayNav ? "active" : ""}`}>
-              Contact
+              <a href="#contact" onClick={() => handleNav()}>
+                Contact
+              </a>
             </span>
           </li>
         </ul>

@@ -1,7 +1,12 @@
 import React, { useEffect } from "react";
 import Image from "next/image";
+import { GraphQlResponse } from "../lib/datocms/types";
 
-const Equipe = () => {
+type data = {
+  team: GraphQlResponse.Presentation;
+};
+
+const Equipe = ({ team }: data) => {
   useEffect(() => {
     const titleTarget = document.querySelector(".equipe");
     const titles = document.querySelectorAll(".equipe_title");
@@ -51,52 +56,51 @@ const Equipe = () => {
 
     return () => {
       titleObserver.disconnect();
+      imageObserver.disconnect();
     };
   }, []);
   return (
     <>
-      <section className="equipe">
+      <section className="equipe wrapper" id="equipe">
         <div>
-          <h1 className="equipe_title">
-            <span>professionel.</span>
-          </h1>
-          <h1 className="equipe_title">
-            <span>pas drole.</span>
-          </h1>
-          <h1 className="equipe_title">
-            <span>puducu.</span>
-          </h1>
+          {team.titre.map((el) => {
+            return (
+              <h1 className="equipe_title title" key={el.id}>
+                <span>{el.texte}</span>
+              </h1>
+            );
+          })}
         </div>
         <div className="equipe_portrait">
           <div className="equipe_portrait_container">
             <div className="equipe_portrait_wrapper even">
               <Image
-                src="/portrait.jpg"
+                src={team.personne[0].image.url}
                 layout="responsive"
-                alt=""
+                alt={team.personne[0].image.alt}
                 height={125}
                 width="100%"
                 objectFit={"cover"}
               />
               <div className="equipe_portrait_presentation">
-                <h2>Clarence le noir</h2>
-                <p>Blabla Blabla Blabla</p>
+                <h2>{team.personne[0].nom}</h2>
+                <p>{team.personne[0].competence}</p>
               </div>
             </div>
           </div>
           <div className="equipe_portrait_container">
             <div className="equipe_portrait_wrapper odd">
               <Image
-                src="/portrait2.jpg"
+                src={team.personne[1].image.url}
                 layout="responsive"
-                alt=""
+                alt={team.personne[1].image.alt}
                 height={125}
                 width="100%"
                 objectFit={"cover"}
               />
               <div className="equipe_portrait_presentation">
-                <h2>Théo la brute</h2>
-                <p>Blabla Blabla Blabla</p>
+                <h2>{team.personne[1].nom}</h2>
+                <p>{team.personne[1].competence}</p>
               </div>
             </div>
           </div>

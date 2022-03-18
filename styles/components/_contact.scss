@@ -1,0 +1,29 @@
+.contact {
+  margin-bottom: 50px;
+
+  &_wrapper {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+  }
+
+  &_link {
+    display: flex;
+    align-items: center;
+    column-gap: 15px;
+    font-size: 25px;
+    font-weight: bold;
+    text-decoration: none;
+  }
+}
+
+@include minwidth(md) {
+  .contact {
+    &_wrapper {
+      margin-top: 30px;
+      flex-direction: row;
+      justify-content: space-around;
+    }
+  }
+}

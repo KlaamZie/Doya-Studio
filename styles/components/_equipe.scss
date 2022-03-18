@@ -1,23 +1,8 @@
 .equipe {
-  padding: 50px 0;
   display: grid;
 
   &_title {
     text-align: left;
-    font-size: 40px;
-    text-transform: uppercase;
-    overflow: hidden;
-
-    span {
-      display: block;
-      overflow: hidden;
-      transform: translateY(100%);
-      transition: all .5s ease-in-out;
-
-      &.intersecting {
-        transform: translateY(0%);
-      }
-    }
 
     &:nth-of-type(2) {
       span {
@@ -46,8 +31,7 @@
 
     &_container {
       position: relative;
-
-
+      overflow: hidden;
     }
 
     &_wrapper {
@@ -75,6 +59,56 @@
       display: flex;
       flex-direction: column;
       row-gap: 5px;
+    }
+  }
+}
+
+@include minwidth(md) {
+  .equipe {
+    &_portrait {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 20px;
+
+      &_wrapper {
+        &.even {
+          transform: translateX(-100%);
+        }
+
+        &.odd {
+          transform: translateX(100%);
+        }
+
+        &.intersecting {
+          transform: translateX(0%);
+        }
+      }
+    }
+  }
+}
+
+@include minwidth(lg) {
+  .equipe {
+    display: flex;
+    column-gap: 40px;
+
+    &_portrait {
+      margin-top: 0;
+      width: 100%;
+
+      &_wrapper {
+        &.even {
+          transform: translateX(100%);
+        }
+
+        &.odd {
+          transform: translateX(100%);
+        }
+
+        &.intersecting {
+          transform: translateX(0%);
+        }
+      }
     }
   }
 }

@@ -1,4 +1,16 @@
 .nav {
+  transition: all .3s linear;
+
+  &.displayed {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  &.hidden {
+    visibility: hidden;
+    opacity: 0;
+  }
+
   &_title {
     font-size: 25px;
     position: absolute;
@@ -38,6 +50,8 @@
     padding: 15px;
 
     transition: clip-path .5s ease-in-out, background-color .8s ease-in-out;
+
+    z-index: 98;
 
     &.active {
       background-color: $black;
@@ -98,6 +112,18 @@
 
 @include minwidth(lg) {
   .nav {
+    &.hidden {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    &_btn {
+      left: auto;
+      top: 20px;
+      right: 30px;
+      bottom: auto;
+    }
+
     &_navbar {
       clip-path: circle(0% at 50% 94%);
     }
