@@ -75,6 +75,18 @@ const QUERY_GENERAL = `
       }
       telephone
       mail
+      seo: _seoMetaTags {
+        attributes
+        content
+        tag
+      }
+    }
+    site: _site {
+      favicon: faviconMetaTags {
+        attributes
+        content
+        tag
+      }
     }
   }
 `;

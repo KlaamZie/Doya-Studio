@@ -69,11 +69,10 @@
 
     &_wrapper {
       align-items: stretch;
-      overflow: auto;
+      overflow: hidden;
       column-gap: 10px;
       height: 600px;
       margin-bottom: 0;
-
     }
 
     &_item {
@@ -91,6 +90,9 @@
 
       > section {
         position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
         visibility: hidden;
         opacity: 0;
 
@@ -106,7 +108,7 @@
         }
       }
 
-      &:hover {
+      &:hover, &:active, &:focus {
         flex: 5;
 
 

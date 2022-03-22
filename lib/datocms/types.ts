@@ -16,6 +16,7 @@ export namespace GraphQlResponse {
 
   export interface Generals {
     general: General;
+    site: Site;
   }
 
   export interface Presentation {
@@ -44,6 +45,11 @@ export namespace GraphQlResponse {
     showreel: Image;
     telephone: string;
     mail: string;
+    seo: SEO;
+  }
+
+  export interface Site {
+    favicon: Favicon[];
   }
 }
 
@@ -66,4 +72,34 @@ interface Image {
   video: {
     streamingUrl: string;
   };
+}
+
+interface Favicon {
+  attributes: AttributesFavicon;
+  content?: any;
+  tag: string;
+}
+
+interface AttributesFavicon {
+  sizes: string;
+  type: string;
+  rel: string;
+  href: string;
+}
+
+interface SEO {
+  _seoMetaTags: SeoMetaTags[];
+
+  concat(favicon: Favicon[]): any;
+}
+
+interface SeoMetaTags {
+  attributes: SeoAttribute;
+  content: string;
+  tag: string;
+}
+
+interface SeoAttribute {
+  property: string;
+  content: string;
 }
